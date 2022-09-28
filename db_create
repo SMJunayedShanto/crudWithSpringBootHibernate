@@ -1,0 +1,24 @@
+alter session set "_oracle_script"=true;
+
+CREATE TABLESPACE spring_boot_hibernate DATAFILE
+  'E:\oracle1\oradata\ORCL\spring_boot_hibernate.DBF' SIZE 136960K AUTOEXTEND ON NEXT 1280K MAXSIZE UNLIMITED
+LOGGING
+DEFAULT
+  NO INMEMORY
+ONLINE
+EXTENT MANAGEMENT LOCAL AUTOALLOCATE
+BLOCKSIZE 8K
+SEGMENT SPACE MANAGEMENT AUTO
+FLASHBACK ON;
+
+CREATE USER spring_boot_hibernate
+  IDENTIFIED BY spring_boot_hibernate
+  DEFAULT TABLESPACE spring_boot_hibernate
+  TEMPORARY TABLESPACE TEMP
+  PROFILE DEFAULT
+  ACCOUNT UNLOCK;
+
+GRANT DBA TO spring_boot_hibernate;
+ALTER USER spring_boot_hibernate DEFAULT ROLE ALL;
+
+GRANT UNLIMITED TABLESPACE TO spring_boot_hibernate;
